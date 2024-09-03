@@ -1,0 +1,38 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    title: {
+        type: #STANDARD,
+        label: 'Clientes',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Cliente'
+    },
+    description: {
+        type: #STANDARD,
+        label: 'Detalle Cliente',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Nombre'
+    }
+}
+annotate entity Z_B_VENTAS_1567 with
+{
+  @UI.facet: [{ id: 'DetallesClientes', label: 'Detalles del Cliente', type: #COLLECTION, position:10 },
+              { id: 'Cliente', parentId: 'DetallesClientes', label: 'Detalles', type: #FIELDGROUP_REFERENCE, targetQualifier: 'DetallesClientes', position: 10}]
+  @UI.lineItem: [{ position: 10, importance: #HIGH, label: 'Id. Venta'}]
+  IdVenta;
+  @UI.fieldGroup: [{ qualifier: 'DetallesClientes', position: 10 }]
+  @UI.lineItem: [{ position: 11, importance: #HIGH, label: 'No. Cliente'}]
+  IdCliente;
+  @UI.fieldGroup: [{ qualifier: 'DetallesClientes', position: 20, label: 'Nombre' }]
+  @UI.lineItem: [{ position: 20, importance: #HIGH, label: 'Nombre'}]
+  Nombre;
+  @UI.fieldGroup: [{ qualifier: 'DetallesClientes', position: 30, label: 'Apellidos'}]
+  @UI.lineItem: [{ position: 30, importance: #HIGH, label: 'Apellidos'}]
+  Apellidos;
+  @UI.fieldGroup: [{ qualifier: 'DetallesClientes', position: 40 }]
+  @UI.lineItem: [{ position: 40, importance: #MEDIUM, label: 'Email'}]
+  Email;
+  @UI.fieldGroup: [{ qualifier: 'DetallesClientes', position: 50 }]
+  @UI.lineItem: [{ position: 50, importance: #LOW, label: 'URL' }]
+  URL;
+
+}

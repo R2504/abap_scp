@@ -1,0 +1,56 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Libro',
+    typeNamePlural: 'Libros',
+    imageUrl: 'Portada',
+    title: {
+        type: #STANDARD,
+        label: 'Ventas Libros',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Titulo'
+    },
+    description: {
+        type: #STANDARD,
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Autor'
+    }
+}
+annotate entity Z_I_SALESBOOK_1567 with
+{
+  @UI.facet: [{ id: 'DetallesLibros', label: 'Detalles del Libro', type: #COLLECTION, position:10 },
+              { id: 'Libro', parentId: 'DetallesLibros', label: 'Detalles', type: #FIELDGROUP_REFERENCE, targetQualifier: 'DetallesLibros', position: 10},
+              { id: 'Ventas',  label: 'Ventas', type: #LINEITEM_REFERENCE, targetElement: '_Ventas', position: 20}]
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibros', position: 10 }]
+  Id;
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibros', position: 20 }]
+  @UI.lineItem: [{ position: 10, importance: #HIGH }]
+  @UI.selectionField: [{ position: 10 }]
+  Titulo;
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibros', position: 30 }]
+  @UI.lineItem: [{ position: 20, importance: #HIGH }]
+  Autor;
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibros', position: 40 }]
+  Editorial;
+  @UI.lineItem: [{ position: 30, importance: #MEDIUM }]
+  Formato;
+  //  Idioma;
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibros', position: 50 }]
+  Paginas;
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibros', position: 60 }]
+  Precio;
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibros', position: 70 }]
+  Moneda;
+  //  Portada;
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibros', position: 80, label: 'Categoría' }]
+  @UI.lineItem: [{ position: 40, importance: #HIGH, label: 'Categoría'}]
+  Descripcion;
+
+  @UI.lineItem: [{ position: 39, importance: #LOW, label: 'ID Categoria' }]
+  @UI.selectionField: [{ position: 20 }]
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'Z_B_CATEGORIA_8581', element: 'Categoria' }, label: 'Categoría'}]
+  Categoria;
+
+  @UI.lineItem: [{ position: 50, importance: #MEDIUM, label: 'Libros Vendidos', criticality: 'Vendidos' }]
+  Estado;
+
+}
